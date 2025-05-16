@@ -38,7 +38,7 @@ local layer1 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChase
 local layer2 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer2.wav?raw=true","layer2")
 local layer3 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer3.wav?raw=true","layer3")
 local layer4 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer4.wav?raw=true","layer4")
-local lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/%5BWEATHERGIRL%20JOHN%20DOEGARDENER%20TWO%20TIME%20LMS%5D%20Skies%20Forever%20Gray%20(Forsaken%20UST)%20(mp3cut.net).wav?raw=true","lastmanstandingwater")
+local lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/lastmanwater.wav?raw=true","lastmanstandingwater")
 
 
 
