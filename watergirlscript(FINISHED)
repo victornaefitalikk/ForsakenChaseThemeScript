@@ -38,7 +38,7 @@ local layer1 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChase
 local layer2 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer2.wav?raw=true","layer2")
 local layer3 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer3.wav?raw=true","layer3")
 local layer4 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer4.wav?raw=true","layer4")
-local lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/lastmanwater.wav?raw=true","lastmanstandingwater")
+local lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/LASTMANSTANDINGWATER?raw=true","lastmanstandingwater")
 
 
 
@@ -57,8 +57,8 @@ workspace.Players.Killers.ChildAdded:Connect(function(instance)
 end)
 workspace:FindFirstChild("Themes").ChildAdded:Connect(function(instance)
     if instance.Name == "MapAmbience" or instance.Name == "lobby" or instance.Name == "Destroying" then
-      print("Nop")
     else
+	      if CurrentKiller == nil then warn("killer is new")return end
           print("Chase Theme Added To Folder")
         print(CheckKillerSkin(CurrentKiller))
         if CurrentKiller.Name == "JohnDoe" and CurrentKiller:GetAttribute("SkinName") == "" then
