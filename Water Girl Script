@@ -2,6 +2,8 @@ local e = game:GetObjects("rbxassetid://102570694589777")[1]
 e.Parent = game.ReplicatedStorage
 local Puddle = game:GetObjects("rbxassetid://122231191410656")[1]
 Puddle.Parent = game.ReplicatedStorage
+local PuddlePrint = game:GetObjects("rbxassetid://117210515979826")[1]
+PuddlePrint.Parent = game.ReplicatedStorage
 local function currentkiller()
 for i, killer in pairs(workspace.Players.Killers:GetChildren()) do
 	if killer then
@@ -17,7 +19,7 @@ for i, killers in pairs(workspace.Players.Killers:GetChildren()) do
 
 		local HeadWeld = e.Head:FindFirstChild("HeadWeld"):Clone()
 		local head = e.Head.Head
-		for i, clean in pairs(killers:WaitForChild("Head"):GetChildren()) do
+		for i, clean in pairs(killers:FindFirstChild("Head"):GetChildren()) do
 			clean:Destroy()
 		end;
 		for i, cleanTorso in pairs(killers.Torso:GetChildren()) do
@@ -182,7 +184,7 @@ for i, killers in pairs(workspace.Players.Killers:GetChildren()) do
 		if killers:FindFirstChild("JohnDoeTrail") then
 			print("folder has been found")
 			task.spawn(function()
-				while task.wait(1) do
+				while task.wait(.5) do
 					for i, trail in pairs(killers:WaitForChild("JohnDoeTrail"):GetChildren()) do
 						if trail.Name == "Trail" and trail:IsA("BasePart") then
 							if not trail:HasTag("ClientChanged") then
@@ -216,26 +218,33 @@ end
 end)
 
 workspace.Map.Ingame.ChildAdded:Connect(function(ins)
-if currentkiller().Name == nil then return end
-if ins.Name == "Shadow" and ins:IsA("BasePart") and currentkiller().Name == "JohnDoe" and currentkiller().SkinName == "" then
-print("foot print added, trying to change rn")
+if ins.Name == workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"] then
+	workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"].ChildAdded:Connect(function(ins)
+if ins.Name == "Shadow" and currentkiller().Name == "JohnDoe" and currentkiller():GetAttribute("SkinName") == "" then
 	for i, particles in pairs(ins:GetDescendants()) do
 		if particles:IsA("ParticleEmitter") then
 			particles.Rate = 0
 		end
 	end;
-	local attach = Puddle.Attachment:Clone()
+	local attach = PuddlePrint.Attachment:Clone()
+	local ParticleClone = PuddlePrint.Misc:Clone()
 	attach.Parent = ins
+	ParticleClone.Parent = ins
 	attach.Orientation = Vector3.new(0,0,90)
 	task.spawn(function()
-		attach.CubeSlam:Emit(5)
+		attach.Cube:Emit(5)
+		ParticleClone:Emit(5)
 		task.wait(0.6)
-		attach.CubeSlam:Emit(5)
+		ParticleClone:Emit(5)
+		attach.Cube:Emit(5)
 		task.wait(0.6)
-		attach.CubeSlam:Emit(5)
+		ParticleClone:Emit(5)
+		attach.Cube:Emit(5)
 		task.wait(1)
-		attach.CubeSlam:Emit(5)
+	    ParticleClone:Emit(15)
+		attach.Cube:Emit(10)
 		attach.Cube.Enabled = true
+		ParticleClone.Enabled = true
 		ins.Number:GetPropertyChangedSignal("Enabled"):Connect(function()
 			for i, disable in pairs(attach:GetChildren()) do
 				if disable:IsA("ParticleEmitter") then
@@ -246,9 +255,7 @@ print("foot print added, trying to change rn")
 	end)
 end
 end)
-
-
-workspace.Map.Ingame.ChildAdded:Connect(function(ins)
+end
 if ins.Name == "Spike" and currentkiller().Name == "JohnDoe" and currentkiller():GetAttribute("SkinName") == "" then
 print("Spike")
    ins.Spike.Color = Color3.fromRGB(0, 90, 255)
