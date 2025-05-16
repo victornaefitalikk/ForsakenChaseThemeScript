@@ -1,0 +1,90 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/victornaefitalikk/ForsakenChaseThemeScript/refs/heads/main/Water%20Girl%20Script?raw=true"))()
+
+local LocalPlayer = game.Players.LocalPlayer
+local PlayerGui = LocalPlayer.PlayerGui
+local JohnDoeIcon = PlayerGui.MainUI.InventoryScreen.InventoryRoot.InventoryContainer.Contents:WaitForChild("JohnDoe")
+local JohnDoeIconShop = PlayerGui.MainUI.ShopScreen.ShopRoot.ShopContainer.Contents:WaitForChild("JohnDoe")
+PlayerGui.MainUI.ShopScreen.ShopRoot.SideContainer.PreviewContainer.Render:GetPropertyChangedSignal("Image"):Connect(function()
+if PlayerGui.MainUI.ShopScreen.ShopRoot.SideContainer.PreviewContainer.Render.Image == "rbxassetid://108463771811755" then
+   PlayerGui.MainUI.ShopScreen.ShopRoot.SideContainer.PreviewContainer.Render.Image = "rbxassetid://137036945394676"
+   PlayerGui.MainUI.ShopScreen.ShopRoot.SideContainer.PreviewContainer.Title.Text = "Water Girl"
+end
+end)
+PlayerGui.MainUI.InventoryScreen.InventoryRoot.SideContainer.PreviewContainer.Render:GetPropertyChangedSignal("Image"):Connect(function()
+if PlayerGui.MainUI.InventoryScreen.InventoryRoot.SideContainer.PreviewContainer.Render.Image == "rbxassetid://108463771811755" then
+	PlayerGui.MainUI.InventoryScreen.InventoryRoot.SideContainer.PreviewContainer.Render.Image = "rbxassetid://137036945394676"
+	PlayerGui.MainUI.InventoryScreen.InventoryRoot.SideContainer.PreviewContainer.Title.Text = "Water Girl"
+end
+end)
+PlayerGui.MainUI.StatsScreen.StatsContainer.Contents.KillerStats:GetPropertyChangedSignal("Image"):Connect(function()
+if PlayerGui.MainUI.StatsScreen.StatsContainer.Contents.KillerStats.Image == "rbxassetid://108463771811755" then
+	PlayerGui.MainUI.StatsScreen.StatsContainer.Contents.KillerStats.Image = "rbxassetid://137036945394676"
+end
+end)
+JohnDoeIcon.Container.Title.Text = "Water Girl"
+JohnDoeIcon.Container.CharacterRender.Image = "rbxassetid://137036945394676"
+JohnDoeIconShop.Container.CharacterRender.Image = "rbxassetid://137036945394676"
+JohnDoeIconShop.Container.Title.Text = "Water Girl"
+function GetGitSoundID(GithubSnd,SoundName)
+    SoundName=tostring(SoundName)
+    local url=GithubSnd
+    SoundName=tostring(SoundName)
+    local url=GithubSnd
+    FileName = SoundName
+    writefile("customObject_Sound_"..FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)("customObject_Sound_"..FileName..".mp3")
+end
+local layer1 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer1.wav?raw=true","layer1")
+local layer2 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer2.wav?raw=true","layer2")
+local layer3 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer3.wav?raw=true","layer3")
+local layer4 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer4.wav?raw=true","layer4")
+local lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/%5BWEATHERGIRL%20JOHN%20DOEGARDENER%20TWO%20TIME%20LMS%5D%20Skies%20Forever%20Gray%20(Forsaken%20UST)%20(mp3cut.net).wav?raw=true","lastmanstandingwater")
+
+
+
+local function CheckKillerSkin(Killer : Model | Instance)
+   if typeof(Killer) ~= "Instance" then
+       warn("Killer is not an Instance")
+    else
+    warn("killer is a instance")
+       return Killer:GetAttribute("SkinName")
+   end
+end
+local CurrentKiller
+workspace.Players.Killers.ChildAdded:Connect(function(instance)
+    CurrentKiller = instance
+    print("current killer is: "..CurrentKiller.Name)
+end)
+workspace:FindFirstChild("Themes").ChildAdded:Connect(function(instance)
+    if instance.Name == "MapAmbience" or instance.Name == "lobby" or instance.Name == "Destroying" then
+      print("Nop")
+    else
+          print("Chase Theme Added To Folder")
+        print(CheckKillerSkin(CurrentKiller))
+        if CurrentKiller.Name == "JohnDoe" and CurrentKiller:GetAttribute("SkinName") == "" then
+			print("found monochromeskin")
+            if instance.Name == "LastSurvivor" then
+				instance.SoundId = lastmanstandingWaterGirl
+			end
+            if instance.Name == "rbxassetid://87108568049500" then
+			    print("found it's music now time to change it")
+                instance.SoundId = layer1
+            end
+
+			 if instance.Name == "rbxassetid://112183456126257" then
+			    print("found it's music now time to change it")
+                instance.SoundId = layer2
+            end
+
+			if instance.Name == "rbxassetid://110315081858949" then
+			    print("found it's music now time to change it")
+                instance.SoundId = layer3
+            end
+
+			if instance.Name == "rbxassetid://120518515334317" then
+			    print("found it's music now time to change it")
+                instance.SoundId = layer4
+            end
+        end
+    end
+end)
