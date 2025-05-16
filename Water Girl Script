@@ -1,0 +1,259 @@
+local e = game:GetObjects("rbxassetid://102570694589777")[1]
+e.Parent = game.ReplicatedStorage
+local Puddle = game:GetObjects("rbxassetid://122231191410656")[1]
+Puddle.Parent = game.ReplicatedStorage
+local function currentkiller()
+for i, killer in pairs(workspace.Players.Killers:GetChildren()) do
+	if killer then
+		return killer
+	end
+end
+end
+workspace.Players.Killers.ChildAdded:Connect(function()
+for i, killers in pairs(workspace.Players.Killers:GetChildren()) do
+	if killers.Name == "JohnDoe" and killers:GetAttribute("SkinName") == "" then
+	task.wait(.1)
+		-- HEAD SETUP -- ||
+
+		local HeadWeld = e.Head:FindFirstChild("HeadWeld"):Clone()
+		local head = e.Head.Head
+		for i, clean in pairs(killers.Head:GetChildren()) do
+			clean:Destroy()
+		end;
+		for i, cleanTorso in pairs(killers.Torso:GetChildren()) do
+			if not cleanTorso:IsA("Motor6D") then
+				cleanTorso:Destroy()
+			end
+		end
+
+		local HeadClone = head:Clone()
+		HeadClone.Parent = killers.Head
+		HeadWeld.Parent = killers.Head
+		HeadWeld.Part0 =  killers.Head
+		HeadWeld.Part1 =  killers.Head.Head
+
+		local Hair = e.Head.Hair:Clone() 
+		local Hair2 = e.Head.Hair2:Clone() 
+		local Hair3 = e.Head.Hair3:Clone() 
+
+
+		local Scarf = e.Head.Scarf:Clone()
+		local Eye = e.Head.Eye:Clone()
+		local Effect = e.Head.Effect:Clone()
+		local Mouth = e.Head.Mouth:Clone()
+		local Debris = e.HumanoidRootPart.Debris:Clone()
+		local HairWeld =  e.Head.Head:FindFirstChild("Hair"):Clone()
+		local HairWeld2 =  e.Head.Head:FindFirstChild("Hair2"):Clone()
+		local HairWeld3 =  e.Head.Head:FindFirstChild("Hair3"):Clone()
+		local DebrisWeld = Instance.new("Weld")
+		DebrisWeld.Parent = killers.HumanoidRootPart
+		Debris.Parent = killers.HumanoidRootPart
+		Debris.CanCollide = false
+		DebrisWeld.Part0 = killers.HumanoidRootPart
+		DebrisWeld.Part1 = Debris
+
+		local ScarfWeld =  e.Head.Head:FindFirstChild("Scarf"):Clone()
+		local EyeWeld =  e.Head.Head:FindFirstChild("Eye"):Clone()
+		local EffectWeld =  e.Head.Head:FindFirstChild("Effect"):Clone()
+		local MouthWeld =  e.Head.Head:FindFirstChild("Mouth"):Clone()
+
+		Hair.Parent = HeadClone
+		Hair2.Parent = HeadClone
+
+		Scarf.Parent = HeadClone
+		Mouth.Parent = HeadClone
+
+		Eye.Parent = HeadClone
+		Effect.Parent = HeadClone
+		HairWeld.Parent = HeadClone
+		HairWeld2.Parent = HeadClone
+		ScarfWeld.Parent = HeadClone
+		EyeWeld.Parent = HeadClone
+		EffectWeld.Parent = HeadClone
+		MouthWeld.Parent = HeadClone
+
+		HairWeld.Part0 = HeadClone
+		HairWeld.Part1 = Hair
+
+
+
+		HairWeld2.Part0 = HeadClone
+		HairWeld2.Part1 = Hair2
+
+		HairWeld3.Part0 = HeadClone
+		HairWeld3.Part1 = Hair3
+
+		ScarfWeld.Part0 = HeadClone
+		ScarfWeld.Part1 = Scarf
+
+		EyeWeld.Part0 = HeadClone
+		EyeWeld.Part1 = Eye
+
+		EffectWeld.Part0 = HeadClone
+		EffectWeld.Part1 = Effect
+
+		MouthWeld.Part0 = HeadClone
+		MouthWeld.Part1 = Mouth
+		-- HEAD SETUP -- ||
+
+		-- TORSO SETUP -- 
+		local Thingsss = e.Torso.Thingssss:Clone()
+		local ThingsssWeld = e.Torso.ThingssssWeld:Clone()
+		Thingsss.Parent = killers.Torso
+		ThingsssWeld.Parent = killers.Torso
+		ThingsssWeld.Part0 = killers.Torso
+		ThingsssWeld.Part1 = Thingsss
+		-- TORSO SETUP -- 
+
+		-- RIGHT ARM SETUP -- 
+		for i, cleaningRight in pairs(killers["Right Arm"]:GetChildren()) do
+			cleaningRight:Destroy()
+		end;
+
+		local WaterThing = e["Right Arm"].WaterThing:Clone()
+		local WaterThingWeld = e["Right Arm"].RightArmWeld:Clone()
+		WaterThing.Parent = killers["Right Arm"]
+		WaterThingWeld.Parent = killers["Right Arm"]
+		WaterThingWeld.Part0 = killers["Right Arm"]
+		WaterThingWeld.Part1 = WaterThing.PrimaryPart
+		-- LEFT ARM SETUP --
+		for i, cleanarm in pairs(killers["Left Arm"]:GetChildren()) do
+			cleanarm:Destroy()
+		end;
+		local claw1 = e["Left Arm"]["Left Claw 1"]:Clone()
+		local claw2 = e["Left Arm"]["Left Claw 2"]:Clone()
+		local claw3 = e["Left Arm"]["Left Claw 3"]:Clone()
+		local Thing = e["Left Arm"].thing:Clone()
+		local claw1Weld = e["Left Arm"].LeftClaw1Weld:Clone()
+		local claw2Weld = e["Left Arm"].LeftClaw2Weld:Clone()
+		local claw3Weld = e["Left Arm"].LeftClaw3Weld:Clone()
+		local ThingWeld = e["Left Arm"].thingWeld:Clone()
+
+		claw1.Parent = killers["Left Arm"]
+		claw2.Parent = killers["Left Arm"]
+		claw3.Parent = killers["Left Arm"]
+		Thing.Parent = killers["Left Arm"]
+
+		claw1Weld.Parent = killers["Left Arm"]
+		claw2Weld.Parent = killers["Left Arm"]
+		claw3Weld.Parent = killers["Left Arm"]
+		ThingWeld.Parent =  killers["Left Arm"]
+
+		claw1Weld.Part0 =  killers["Left Arm"]
+		claw1Weld.Part1 =claw1
+
+		claw2Weld.Part0 =  killers["Left Arm"]
+		claw2Weld.Part1 =claw2
+
+		claw3Weld.Part0 =  killers["Left Arm"]
+		claw3Weld.Part1 =claw3
+
+		ThingWeld.Part0 = killers["Left Arm"]
+		ThingWeld.Part1 = Thing
+
+		-- SHIRTS AND PANTS -- 
+		local Shirt = e.Shirt:Clone()
+		local Pants = e.Pants:Clone()
+		Shirt.Parent = killers
+		Pants.Parent = killers
+		-- SHIRTS AND PANTS -- 
+
+		-- Right Leg and left -- 
+		for i, cleanleft in pairs(killers["Left Leg"]:GetChildren()) do 
+			cleanleft:Destroy()
+		end
+		for i, cleanRight in pairs(killers["Right Leg"]:GetChildren()) do 
+			cleanRight:Destroy()
+		end
+		local ThingLegRight = e["Right Leg"].thing:Clone()
+		local ThingLegRightWeld = e["Right Leg"].thingWeld:Clone()
+		local ThingLegLeft = e["Left Leg"].thing:Clone()
+		local ThingLegLeftWeld = e["Left Leg"].thingWeld:Clone()
+		ThingLegRight.Parent = killers["Right Leg"]
+		ThingLegRightWeld.Parent = killers["Right Leg"]
+		ThingLegLeft.Parent = killers["Right Leg"]
+		ThingLegLeftWeld.Parent = killers["Right Leg"]
+
+		ThingLegRightWeld.Part0 = killers["Right Leg"]
+		ThingLegRightWeld.Part1 = ThingLegRight
+
+		ThingLegLeftWeld.Part0 = killers["Left Leg"]
+		ThingLegLeftWeld.Part1 = ThingLegLeft
+		if killers:FindFirstChild("JohnDoeTrail") then
+			print("folder has been found")
+			task.spawn(function()
+				while task.wait(.5) do
+					for i, trail in pairs(killers:WaitForChild("JohnDoeTrail"):GetChildren()) do
+						if trail.Name == "Trail" and trail:IsA("BasePart") then
+							if not trail:HasTag("ClientChanged") then
+								trail:AddTag("ClientChanged")
+								for i, ParticleDisable in pairs(trail:GetChildren()) do
+									if ParticleDisable:IsA("ParticleEmitter") then
+										ParticleDisable.Rate = 0
+									end
+								end
+								task.wait(.5)
+								
+								local CloneAtta = Puddle.Attachment:Clone()
+								local MiscDi = Puddle.Misc:Clone()
+								CloneAtta.Parent = trail
+								MiscDi.Parent = trail
+								for i, particle in pairs(CloneAtta:GetChildren()) do
+									if particle:IsA("ParticleEmitter") then
+										particle.Enabled = true
+										MiscDi.Enabled = true
+									end
+								end
+								print("should change")
+							end
+						end
+					end
+				end
+			end)
+		end
+	end
+end
+end)
+
+workspace.Map.Ingame.ChildAdded:Connect(function(ins)
+if ins.Name == "Shadow" and ins:IsA("BasePart") and currentkiller().Name == "John Doe" and currentkiller().SkinName == "" then
+	for i, particles in pairs(ins:GetDescendants()) do
+		if particles:IsA("ParticleEmitter") then
+			particles.Rate = 0
+		end
+	end;
+	local attach = Puddle.Attachment:Clone()
+	attach.Parent = ins
+	attach.Orientation = Vector3.new(0,0,90)
+	task.spawn(function()
+		attach.CubeSlam:Emit(5)
+		task.wait(0.6)
+		attach.CubeSlam:Emit(5)
+		task.wait(0.6)
+		attach.CubeSlam:Emit(5)
+		task.wait(1)
+		attach.CubeSlam:Emit(5)
+		attach.Cube.Enabled = true
+		ins.Number:GetPropertyChangedSignal("Enabled"):Connect(function()
+			for i, disable in pairs(attach:GetChildren()) do
+				if disable:IsA("ParticleEmitter") then
+					disable.Enabled = false
+				end
+			end
+		end)
+	end)
+end
+end)
+
+
+workspace.Map.Ingame.ChildAdded:Connect(function(ins)
+if ins.Name == "Spike" and currentkiller().Name == "JohnDoe" and currentkiller():GetAttribute("SkinName") == "" then
+print("Spike")
+   ins.Spike.Color = Color3.fromRGB(0, 90, 255)
+   ins.Spike.Material = Enum.Material.Plastic
+   ins.Spike.Transparency = 0.6
+  local particle = Puddle.Attachment:Clone()
+  particle.Parent = ins.Spike
+  particle.WorldPosition -= Vector3.new(0, 5, 0)
+end
+end)
