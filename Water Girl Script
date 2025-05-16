@@ -216,7 +216,7 @@ end
 end)
 
 workspace.Map.Ingame.ChildAdded:Connect(function(ins)
-if ins.Name == "Shadow" and ins:IsA("BasePart") and currentkiller().Name == "John Doe" and currentkiller().SkinName == "" then
+if ins.Name == "Shadow" and ins:IsA("BasePart") and currentkiller().Name == "JohnDoe" and currentkiller().SkinName == "" then
 	for i, particles in pairs(ins:GetDescendants()) do
 		if particles:IsA("ParticleEmitter") then
 			particles.Rate = 0
