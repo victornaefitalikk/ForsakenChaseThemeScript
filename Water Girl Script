@@ -12,12 +12,12 @@ end
 workspace.Players.Killers.ChildAdded:Connect(function()
 for i, killers in pairs(workspace.Players.Killers:GetChildren()) do
 	if killers.Name == "JohnDoe" and killers:GetAttribute("SkinName") == "" then
-	task.wait(.1)
+	task.wait(1)
 		-- HEAD SETUP -- ||
 
 		local HeadWeld = e.Head:FindFirstChild("HeadWeld"):Clone()
 		local head = e.Head.Head
-		for i, clean in pairs(killers.Head:GetChildren()) do
+		for i, clean in pairs(killers:WaitForChild("Head"):GetChildren()) do
 			clean:Destroy()
 		end;
 		for i, cleanTorso in pairs(killers.Torso:GetChildren()) do
@@ -182,7 +182,7 @@ for i, killers in pairs(workspace.Players.Killers:GetChildren()) do
 		if killers:FindFirstChild("JohnDoeTrail") then
 			print("folder has been found")
 			task.spawn(function()
-				while task.wait(.5) do
+				while task.wait(1) do
 					for i, trail in pairs(killers:WaitForChild("JohnDoeTrail"):GetChildren()) do
 						if trail.Name == "Trail" and trail:IsA("BasePart") then
 							if not trail:HasTag("ClientChanged") then
@@ -216,7 +216,9 @@ end
 end)
 
 workspace.Map.Ingame.ChildAdded:Connect(function(ins)
+if currentkiller().Name == nil then return end
 if ins.Name == "Shadow" and ins:IsA("BasePart") and currentkiller().Name == "JohnDoe" and currentkiller().SkinName == "" then
+print("foot print added, trying to change rn")
 	for i, particles in pairs(ins:GetDescendants()) do
 		if particles:IsA("ParticleEmitter") then
 			particles.Rate = 0
