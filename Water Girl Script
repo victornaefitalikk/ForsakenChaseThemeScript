@@ -23,9 +23,9 @@ for i, killers in pairs(workspace.Players.Killers:GetChildren()) do
 		local head = e.Head:FindFirstChild("Head"):Clone()
 		
 		for i, clean in pairs(killers:FindFirstChild("Head"):GetChildren()) do
-		if clean ~= nil then
+		
 			clean:Destroy()
-		end
+
 		end;
 		for i, cleanTorso in pairs(killers.Torso:GetChildren()) do
 			if not cleanTorso:IsA("Motor6D") then
