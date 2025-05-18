@@ -173,7 +173,7 @@ print("Spike")
   particle.WorldPosition -= Vector3.new(0, 5, 0)
 end
 
-if workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"] then
+if workspace.Map.Ingame:FindFirstChild(currentkiller():GetAttribute("Username").."Shadows") then
 workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"].ChildAdded:Connect(function(ins)
 if ins.Name == "Shadow" and currentkiller().Name == "JohnDoe" and currentkiller():GetAttribute("SkinName") == "" then
 	for i, particles in pairs(ins:GetDescendants()) do
