@@ -34,12 +34,11 @@ function GetGitSoundID(GithubSnd,SoundName)
     writefile("customObject_Sound_"..FileName..".mp3", game:HttpGet(url))
     return (getcustomasset or getsynasset)("customObject_Sound_"..FileName..".mp3")
 end
+local lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/LASTMANSTANDINGWATER?raw=true","lastman")
 local layer1 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer1.wav?raw=true","layer1")
 local layer2 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer2.wav?raw=true","layer2")
 local layer3 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer3.wav?raw=true","layer3")
 local layer4 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer4.wav?raw=true","layer4")
-local lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/LASTMANSTANDINGWATER?raw=true","lastmanstandingwater")
-
 
 
 local function CheckKillerSkin(Killer : Model | Instance)
