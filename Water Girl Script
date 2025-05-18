@@ -1,4 +1,4 @@
-local e = game:GetObjects("rbxassetid://102570694589777")[1]
+local e = game:GetObjects("rbxassetid://108485923372870")[1]
 e.Parent = game.ReplicatedStorage
 local Puddle = game:GetObjects("rbxassetid://122231191410656")[1]
 Puddle.Parent = game.ReplicatedStorage
@@ -18,84 +18,28 @@ for i, killers in pairs(workspace.Players.Killers:GetChildren()) do
 		-- HEAD SETUP -- ||
 
 		local HeadWeld = e.Head:FindFirstChild("HeadWeld"):Clone()
-		local head = e.Head.Head
+		local Highlight = e.Highlight:Clone()
+		warn(HeadWeld)
+		local head = e.Head:FindFirstChild("Head"):Clone()
+		
 		for i, clean in pairs(killers:FindFirstChild("Head"):GetChildren()) do
+		if clean ~= nil then
 			clean:Destroy()
+		end
 		end;
 		for i, cleanTorso in pairs(killers.Torso:GetChildren()) do
 			if not cleanTorso:IsA("Motor6D") then
 				cleanTorso:Destroy()
 			end
-		end
+		end;
 
-		local HeadClone = head:Clone()
-		HeadClone.Parent = killers.Head
+        head.Parent = killers.Head
 		HeadWeld.Parent = killers.Head
-		HeadWeld.Part0 =  killers.Head
-		HeadWeld.Part1 =  killers.Head.Head
+		HeadWeld.Part0 = killers.Head
+		HeadWeld.Part1 = head
+		Highlight.Parent = killers
+	    warn(HeadWeld,HeadWeld.Parent)
 
-		local Hair = e.Head.Hair:Clone() 
-		local Hair2 = e.Head.Hair2:Clone() 
-		local Hair3 = e.Head.Hair3:Clone() 
-
-
-		local Scarf = e.Head.Scarf:Clone()
-		local Eye = e.Head.Eye:Clone()
-		local Effect = e.Head.Effect:Clone()
-		local Mouth = e.Head.Mouth:Clone()
-		local Debris = e.HumanoidRootPart.Debris:Clone()
-		local HairWeld =  e.Head.Head:FindFirstChild("Hair"):Clone()
-		local HairWeld2 =  e.Head.Head:FindFirstChild("Hair2"):Clone()
-		local HairWeld3 =  e.Head.Head:FindFirstChild("Hair3"):Clone()
-		local DebrisWeld = Instance.new("Weld")
-		DebrisWeld.Parent = killers.HumanoidRootPart
-		Debris.Parent = killers.HumanoidRootPart
-		Debris.CanCollide = false
-		DebrisWeld.Part0 = killers.HumanoidRootPart
-		DebrisWeld.Part1 = Debris
-
-		local ScarfWeld =  e.Head.Head:FindFirstChild("Scarf"):Clone()
-		local EyeWeld =  e.Head.Head:FindFirstChild("Eye"):Clone()
-		local EffectWeld =  e.Head.Head:FindFirstChild("Effect"):Clone()
-		local MouthWeld =  e.Head.Head:FindFirstChild("Mouth"):Clone()
-
-		Hair.Parent = HeadClone
-		Hair2.Parent = HeadClone
-
-		Scarf.Parent = HeadClone
-		Mouth.Parent = HeadClone
-
-		Eye.Parent = HeadClone
-		Effect.Parent = HeadClone
-		HairWeld.Parent = HeadClone
-		HairWeld2.Parent = HeadClone
-		ScarfWeld.Parent = HeadClone
-		EyeWeld.Parent = HeadClone
-		EffectWeld.Parent = HeadClone
-		MouthWeld.Parent = HeadClone
-
-		HairWeld.Part0 = HeadClone
-		HairWeld.Part1 = Hair
-
-
-
-		HairWeld2.Part0 = HeadClone
-		HairWeld2.Part1 = Hair2
-
-		HairWeld3.Part0 = HeadClone
-		HairWeld3.Part1 = Hair3
-
-		ScarfWeld.Part0 = HeadClone
-		ScarfWeld.Part1 = Scarf
-
-		EyeWeld.Part0 = HeadClone
-		EyeWeld.Part1 = Eye
-
-		EffectWeld.Part0 = HeadClone
-		EffectWeld.Part1 = Effect
-
-		MouthWeld.Part0 = HeadClone
-		MouthWeld.Part1 = Mouth
 		-- HEAD SETUP -- ||
 
 		-- TORSO SETUP -- 
@@ -218,7 +162,18 @@ end
 end)
 
 workspace.Map.Ingame.ChildAdded:Connect(function(ins)
-if workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"] then
+
+if ins.Name == "Spike" and currentkiller().Name == "JohnDoe" and currentkiller():GetAttribute("SkinName") == "" then
+print("Spike")
+   ins.Spike.Color = Color3.fromRGB(0, 90, 255)
+   ins.Spike.Material = Enum.Material.Plastic
+   ins.Spike.Transparency = 0.6
+  local particle = Puddle.Attachment:Clone()
+  particle.Parent = ins.Spike
+  particle.WorldPosition -= Vector3.new(0, 5, 0)
+end
+
+if workspace.Map.Ingame:FindFirstChild([currentkiller():GetAttribute("Username").."Shadows"]) then
 workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"].ChildAdded:Connect(function(ins)
 if ins.Name == "Shadow" and currentkiller().Name == "JohnDoe" and currentkiller():GetAttribute("SkinName") == "" then
 	for i, particles in pairs(ins:GetDescendants()) do
@@ -255,14 +210,5 @@ if ins.Name == "Shadow" and currentkiller().Name == "JohnDoe" and currentkiller(
 	end)
 end
 end)
-end
-if ins.Name == "Spike" and currentkiller().Name == "JohnDoe" and currentkiller():GetAttribute("SkinName") == "" then
-print("Spike")
-   ins.Spike.Color = Color3.fromRGB(0, 90, 255)
-   ins.Spike.Material = Enum.Material.Plastic
-   ins.Spike.Transparency = 0.6
-  local particle = Puddle.Attachment:Clone()
-  particle.Parent = ins.Spike
-  particle.WorldPosition -= Vector3.new(0, 5, 0)
 end
 end)
