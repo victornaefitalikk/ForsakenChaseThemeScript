@@ -34,12 +34,17 @@ function GetGitSoundID(GithubSnd,SoundName)
     writefile("customObject_Sound_"..FileName..".mp3", game:HttpGet(url))
     return (getcustomasset or getsynasset)("customObject_Sound_"..FileName..".mp3")
 end
-local lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/LASTMANSTANDINGWATER?raw=true","lastman")
+local lastmanstandingWaterGirl
 local layer1 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer1.wav?raw=true","layer1")
 local layer2 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer2.wav?raw=true","layer2")
 local layer3 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer3.wav?raw=true","layer3")
 local layer4 = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/layer4.wav?raw=true","layer4")
-
+task.defer(function()
+repeat
+task.wait(.1)
+until GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/lastwater.wav?raw=true","lastmanwaterwow")
+lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/lastwater.wav?raw=true","lastmanwaterwow")
+end)
 
 local function CheckKillerSkin(Killer : Model | Instance)
    if typeof(Killer) ~= "Instance" then
