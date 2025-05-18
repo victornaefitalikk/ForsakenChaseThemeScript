@@ -218,8 +218,8 @@ end
 end)
 
 workspace.Map.Ingame.ChildAdded:Connect(function(ins)
-if ins.Name == workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"] then
-	workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"].ChildAdded:Connect(function(ins)
+if workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"] then
+workspace.Map.Ingame[currentkiller():GetAttribute("Username").."Shadows"].ChildAdded:Connect(function(ins)
 if ins.Name == "Shadow" and currentkiller().Name == "JohnDoe" and currentkiller():GetAttribute("SkinName") == "" then
 	for i, particles in pairs(ins:GetDescendants()) do
 		if particles:IsA("ParticleEmitter") then
