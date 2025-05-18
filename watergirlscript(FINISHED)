@@ -44,6 +44,12 @@ repeat
 task.wait(.1)
 until GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/lastwater.wav?raw=true","lastmanwaterwow")
 lastmanstandingWaterGirl = GetGitSoundID("https://github.com/victornaefitalikk/ForsakenChaseThemeScript/blob/main/lastwater.wav?raw=true","lastmanwaterwow")
+print("yes")
+local audiotest = Instance.new("Sound",workspace)
+audiotest.SoundId = lastmanstandingWaterGirl
+if not audiotest.IsLoaded then
+warn("WHY THE AUDIO IS AINT WORKING GOD DAMN.")
+end
 end)
 
 local function CheckKillerSkin(Killer : Model | Instance)
